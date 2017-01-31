@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>{{getFullName()}}</h1>      
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                firstName: 'Brian',
+                lastName: 'Woo'
+            },
+            
+            methods: {
+                // DO NOT USE Arrow function in Vue Instance.
+                getFullName: () => {
+                    console.log(this);
+                    return this.firstName + ' ' + this.lastName;
+                }        
+            }
+        });
+
+    
+    </script>
+
+</body>
+</html>
