@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <div v-bind:title="firstName + ' ' + lastName">Hover to see my name</div>
+        
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                firstName: 'Brian',
+                lastName: 'Woo'
+            }
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>
