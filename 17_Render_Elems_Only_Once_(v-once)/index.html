@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <h1 v-once>{{movieTitle}}</h1>
+        
+        <button v-on:click="movieTitle = 'The Matrix Reloaded'">Change Movie Title</button>
+ 
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                movieTitle: "The Matrix"
+            },
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>

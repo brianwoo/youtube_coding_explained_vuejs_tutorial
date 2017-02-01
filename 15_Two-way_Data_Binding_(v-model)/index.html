@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        
+        <!-- 
+        v-model modifiers: 
+        trim - trim the beginning and trailing white spaces of a string
+        number - cast a number string to a number (default behavior)
+        number.lazy - cast a number str to a number when leaving the input box.
+        -->
+        
+        <input type="text" v-model.number.lazy="age">
+        <p>You entered: {{age}}</p>
+        <p>Type: {{typeof age}}</p>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                name: "",
+                age: 27
+            },
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>

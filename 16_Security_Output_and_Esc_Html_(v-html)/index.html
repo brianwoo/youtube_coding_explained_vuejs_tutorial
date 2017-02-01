@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <div>{{html}}</div>
+        <div v-html="html"></div>
+ 
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                html: "<h1>Hello World!</h1>"
+            },
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>
