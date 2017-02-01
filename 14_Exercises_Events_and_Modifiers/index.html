@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        
+        <!-- EXERCISE 1: Make the below text input update a data property on 
+        every "keyup" event.  Also output the data property.
+        Hint: event.target.value gives access to input value. -->
+        <input type="text" v-on:keyup="updateData($event)">
+        <!-- Or, we can just do this: -->
+        <!--input type="text" v-on:keyup="dataInput = $event.target.value"-->
+        Output: {{dataInput}}
+        
+        <br/><br/>
+        
+        <!-- EXERCISE 2: Make the below text input update the data property 
+        from exercise 1, but only when pressing the Control + Enter keys.
+        Hint: The key modifier for the Control key is named "ctrl" -->
+        <input type="text" v-on:keyup.enter.ctrl="updateData($event)">
+        Output: {{dataInput}}
+        
+        <br/><br/>
+        
+        
+        <!-- EXERCISE 3: Prevent the below form from submitting.
+        Hint: Prevent the "submit" event on the form. -->
+        <form action="" method="GET" v-on:submit.prevent>
+            <input type="submit" value="Submit" >
+        </form>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                dataInput: ""
+            },
+            
+            methods: {
+                updateData: function(e) {
+                    //console.log("value=" + e.target.value);
+                    this.dataInput = e.target.value;
+                },
+                
+                submitData: function() {
+                    console.log("submitData called");
+                }
+            }
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>
