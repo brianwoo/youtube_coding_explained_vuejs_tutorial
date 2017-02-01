@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="p in persons" v-bind:key="p.id">
+                {{p.name}} (ID: {{p.id}}) <input type="text">
+            </li>
+        </ul>
+        
+        <button v-on:click="addNewPerson()">Add Person</button>
+        <button v-on:click="shuffle()">Shuffle</button>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+    
+        new Vue({
+               
+            el: '#app',
+            
+            data: {
+                persons: [
+                    {id: 1, name: "Andy"},
+                    {id: 2, name: "Abby"},
+                    {id: 3, name: "Teresa"}
+                ],
+            },
+            
+            methods: {
+                addNewPerson: function() {
+                    var highestId = Math.max.apply(Math, this.persons.map(function(p) {
+                        return p.id;
+                    }));
+                    var names = ['Billy', 'Michael', 'Steve', 'Diane', 'Peter'];
+                    
+                    this.persons.push({
+                        id: highestId + 1,
+                        name: names[Math.floor(Math.random() * names.length)]
+                    });
+                },
+                
+                shuffle: function() {
+                    this.persons = this.shuffleArray(this.persons);
+                },
+                
+                shuffleArray: function(arr) {
+                    var newArr = new Array();
+                    var firstElem = arr[0];
+                    
+                    for (var i=1; i < arr.length; i++) {
+                        newArr.push(arr[i]);
+                    }
+                    
+                    newArr.push(firstElem);
+                    return newArr;
+                    
+                }
+            }
+                    
+        });
+
+    </script>
+
+</body>
+</html>
