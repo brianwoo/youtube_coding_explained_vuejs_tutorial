@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <p v-show="isNinja">Invisible like a ninja!</p>
+        <p v-show="!isNinja">Here I am!</p>
+
+        <button v-on:click="isNinja = !isNinja">Toggle Ninja Skills</button>
+        
+        
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                isNinja: true
+            },
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <p v-if="itemsInStock > 10">{{itemsInStock}} in stock.</p>
+        <p v-else-if="itemsInStock > 0">Hurry up, there are just a few items left!</p>
+        <p v-else>Too bad, we're all out!</p>
+        
+        <p></p>
+        
+        <!-- Use template instead of div because template is not going to be added 
+        to the resulting html -->
+        <template v-if="itemsInStock > 50">
+            <p>Special Offer!</p>
+            <p>Looks like we have tons of products in stock!</p>
+        </template>
+        
+        
+        
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                itemsInStock: 51
+            },
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>Movies</h1>
+        <ul>
+            <li v-for="title in movieTitles">{{title}}</li>
+        </ul>
+        
+        
+        <h1>Employees</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Company</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="employee in employees">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.title}}</td>
+                    <td>{{companyName}}</td>                    
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+    
+        new Vue({
+               
+            el: '#app',
+                
+            data: {
+                movieTitles: [
+                               'The Matrix', 
+                               'The Matrix Reloaded',
+                               'The Matrix Revolutions'
+                             ],
+                    
+                employees: [
+                              {name: "Abby", title: "Accountant"},
+                              {name: "Andy", title: "Marketing Manager"},
+                              {name: "Brandon", title: "Vue.js expert"},
+                           ],
+                           
+                companyName: "VueX Ltd."
+            },
+                
+        });
+
+    </script>
+
+</body>
+</html>
