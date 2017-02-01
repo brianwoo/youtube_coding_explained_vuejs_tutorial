@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+    
+        <!-- on:click.stop stops event propagation up from button to div, -->
+        <!-- i.e. dialog opens 2 times -->
+        <div v-on:click="showDialog">
+            <button v-on:click.stop="showDialog">Click Here!</button>
+        </div>
+        
+        <!-- Dialog will only show once -->
+        <button v-on:click.once="showDialog">Show only once!</button>
+        <br/>
+        
+        <!-- Prevent - prevent default behaviour, i.e. going to the URL -->
+        <a href="http://google.com" v-on:click.prevent="showDialog" target="_blank">Or here!</a>
+        <br/>
+        
+        <!-- With just v-on:click.prevent, it will not open dialog nor URL  -->
+        <a href="http://google.com" v-on:click.prevent target="_blank">Not open URL or dialog!</a>        
+        
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            methods: {
+                showDialog: function() {
+                    alert("Hello World!");
+                }
+            }
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>

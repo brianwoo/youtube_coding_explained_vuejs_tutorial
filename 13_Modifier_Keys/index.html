@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+    
+        <div>keyup.enter</div>
+        <input type="text" v-on:keyup.shift.enter="myListener">
+        <button v-on:click.shift="myButtonListener">Shift + Click Here</button>
+        
+        <button v-on:click.meta="myButtonListener">Meta + Click Here</button>
+        
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            methods: {
+                myListener: function() {
+                    alert("You pressed the Shift + Enter key");
+                },
+                
+                myButtonListener: function() {
+                    alert("You clicked the button!");
+                }                
+            }
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>

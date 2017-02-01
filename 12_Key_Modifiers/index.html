@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+    
+        <div>keyup.enter</div>
+        <input type="text" v-on:keyup.enter="pressedEnter()">
+        <br/>
+        <div>keyup.13</div>
+        <input type="text" v-on:keyup.13="pressedEnter()">
+        <br/>
+        <div>keyup.enter or spacebar</div>
+        <input type="text" v-on:keyup.enter.space="pressedEnter()">        
+        
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            methods: {
+                pressedEnter: function() {
+                    alert("You pressed the Enter key");
+                }
+            }
+            
+        });
+
+    
+    </script>
+
+</body>
+</html>
