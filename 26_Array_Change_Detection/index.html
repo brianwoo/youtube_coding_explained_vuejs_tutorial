@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="n in numbers">{{n}}</li>
+        </ul>
+        
+        <button v-on:click="changeNumber()">Change Number</button>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+    
+        new Vue({
+               
+            el: '#app',
+            
+            data: {
+                numbers: [1,2,3,4,5]
+            },
+            
+            methods: {
+                changeNumber: function() {
+                    
+                    // The following doesn't work
+                    // because VueJS can't monitor
+                    // changes in an array using the 
+                    // square bracket [] notation.
+                    //this.numbers[1] = 10;
+                    
+                    //To change the array and let
+                    // VueJS know there is a change, use:
+                    Vue.set(this.numbers, 1, 10);
+                    
+                    alert(this.numbers[1]);
+                }
+            }
+                    
+        });
+
+    </script>
+
+</body>
+</html>
