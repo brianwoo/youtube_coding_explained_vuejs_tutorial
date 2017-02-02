@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="searchQuery">
+        
+        <p v-if="isSearching">Searching...</p>
+        <div v-else>
+            <ol>
+                <li v-for="result in results">
+                    {{result}}
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+    
+        new Vue({
+               
+            el: '#app',
+            
+            data: {
+                searchQuery: '',
+                results: [],
+                isSearching: false
+            },
+            
+            // watcher is for watching a data field
+            // which is changed by an async call.
+            // ** Difference: computed properties is for sync operations. **
+            watch: {
+                searchQuery: function(query) {
+                    //console.log(query);
+                    this.isSearching = true;
+                    console.log("in searchQuery ");
+                    console.log(this);
+
+                    // the following doesn't work because "this"
+                    // is in a different scope.
+                    // setTimeout(function() {});
+                        
+                    // Another way of doing it is to assign
+                    // "this" to a variable.  Then access this 
+                    // variable in the setTimeout function.
+                    // var vm = this;
+                        
+                    // with ES6 () =>, "this" will always be 
+                    // passed into the method.
+                    setTimeout(() => {
+                        console.log("in searchQuery setTimeout ");
+                        console.log(this);
+                        
+                        this.results = ['Javascript', 'PHP', 'MySQL'];
+                        this.isSearching = false;
+                        
+                    }, 500);
+                }
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <p>{{counter}}</p>
+        <p>{{fullName }}</p>
+        <p>{{fullName }}</p>
+        <p>{{dumbMethod() }}</p>
+        
+        <!-- NOTE: running method will re-render the template which 
+        will trigger all other depending methods to run 
+        E.g. when counter++ is run this will trigger dumbMethod() 
+        to run. -->
+        <button v-on:click="counter++">Increase Counter</button>
+        <button v-on:click="changeName()">Change Name</button>        
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+    
+        new Vue({
+               
+            el: '#app',
+            
+            data: {
+                counter: 1,
+                firstName: 'Brian',
+                lastName: 'Woo'
+            },
+
+            methods: {
+                changeName: function() {
+                    this.firstName = "Steve";
+                    this.lastName = "Cook";                    
+                },
+                
+                dumbMethod: function() {
+                    console.log("Running dumb method!");
+                }
+            },
+
+            computed: {
+                fullName: function() {
+                    alert("Assembling full name...");
+                    return this.firstName + " " + this.lastName;
+                }
+            }  
+        });
+
+    </script>
+
+</body>
+</html>

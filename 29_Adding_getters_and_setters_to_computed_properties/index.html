@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <p>{{counter}}</p>
+        <p>{{fullName }}</p>
+        <p>{{fullName }}</p>
+        <p>{{dumbMethod() }}</p>
+        
+        <!-- NOTE: running method will re-render the template which 
+        will trigger all other depending methods to run 
+        E.g. when counter++ is run this will trigger dumbMethod() 
+        to run. -->
+        <button v-on:click="counter++">Increase Counter</button>
+        <button v-on:click="changeName()">Change Name</button>    
+        <button v-on:click="changeNameSetter()">Change Name (setter)</button>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+    
+        new Vue({
+               
+            el: '#app',
+            
+            data: {
+                counter: 1,
+                firstName: 'Brian',
+                lastName: 'Woo'
+            },
+
+            methods: {
+                changeName: function() {
+                    this.firstName = "Steve";
+                    this.lastName = "Cook";                    
+                },
+                
+                dumbMethod: function() {
+                    console.log("Running dumb method!");
+                },
+                
+                changeNameSetter: function() {
+                    this.fullName = "Steve Cook";
+                }
+            },
+
+            computed: {
+                fullName: {
+                    get: function() {
+                        alert("Assembling full name...");
+                        return this.firstName + " " + this.lastName;                        
+                    },
+                    
+                    // Setter will automatically called when 
+                    // fullName is changed.  The new value will
+                    // be passed into newValue.
+                    set: function(newValue) {
+                        alert("Setting new name:" + newValue);
+                        var parts = newValue.split(" ");
+                        this.firstName = parts[0];
+                        this.lastName = parts[parts.length - 1];
+                    }
+                }
+            }  
+        });
+
+    </script>
+
+</body>
+</html>
