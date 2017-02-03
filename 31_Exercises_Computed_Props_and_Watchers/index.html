@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- EXERCISE 1: Add a computed property which returns an 
+        array of strings with the movie name followed by the release
+        year in parenthesis. -->
+        <ol>
+            <li v-for="movie in movieList">{{movie}}</li>
+        </ol>
+        
+        
+        <!-- EXERCISE 2: Make the button below add a movie of your 
+        choice to the "movies" data property.  Then add a watcher
+        which outputs the movie that was just added in an alert
+        dialog. -->
+        <button v-on:click="addMovie()">Add Movie</button>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+    
+        new Vue({
+               
+            el: '#app',
+            
+            data: {
+                movies: [
+                    {name: 'The Matrix', year: 1999},
+                    {name: 'The Matrix Reloaded', year: 2003},
+                    {name: 'The Matrix Revolutions', year: 2003}
+                
+                ]
+            },
+            
+            methods: {
+                addMovie: function() {
+                    this.movies.push(
+                        {name: "Brian's Movie", year: 2017});
+                }
+            },
+            
+            
+            computed: {
+                movieList: function() {
+                    
+                    //console.log("in MovieList");
+                    
+                    var movies = new Array();
+                    
+                    for (var i=0; i < this.movies.length; i++) {
+                        var movie = this.movies[i];
+                        var movieStr = 
+                            movie.name + " (" + movie.year + ")";
+                        
+                        //console.log(movieStr);
+                        
+                        movies.push(movieStr);
+                    }
+                    
+                    return movies;
+                }
+            },
+            
+            watch: {
+                movies: function(newMovies) {
+                    //console.log(newMovies);
+                    
+                    var movieAdded = 
+                        newMovies[newMovies.length - 1];
+                        
+                    alert("Added: " + 
+                        movieAdded.name + 
+                        " (" + movieAdded.year + ")");
+                }
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
