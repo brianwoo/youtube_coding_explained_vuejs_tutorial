@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <button v-on:click="hello">Hello (v-on)</button>
+        <button @click="hello">Hello (shorthand)</button>
+        
+        <p v-bind:title="title">Hover me (v-bind)</p>
+        <p :title="title">Hover me (shorthand)</p>
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                title: 'Hello World!'
+            },
+            
+            methods: {
+                hello: function() {
+                    alert("Hello World!");
+                }
+            }
+        });
+    
+    </script>
+
+</body>
+</html>

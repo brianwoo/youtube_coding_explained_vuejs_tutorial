@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>{{message | uppercase(true) }}</h1>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+    
+        new Vue({
+               
+            el: '#app',
+            
+            data: {
+                message: 'hello world!'
+            },
+            
+            filters: {
+                uppercase: function(value, onlyFirstCharacter) {
+                    
+                    if (!value) {
+                        return "";
+                    }
+                    
+                    value = value.toString();
+                    if (onlyFirstCharacter) {
+                        return value.charAt(0).toUpperCase() + value.slice(1);
+                    }
+                    // else
+                    return value.toUpperCase();
+                    
+                }
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

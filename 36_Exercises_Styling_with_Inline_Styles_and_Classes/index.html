@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="app">
+        <!-- EXERCISE 1: Bind the "shapeStyles" data property to the "style" attribute.
+        When clicking the below shape, change the shape from round to squared or 
+        vice versa.-->
+        <div class="shape" v-bind:style="shapeStyles" v-on:click="changeShape()"></div>
+
+
+        <!-- EXERCISE 2: Apply the "highlighted" class to every second row in the below
+        table.  HINT: Use the modulus operator together with the v-for loop index. -->
+        <h1>Employees</h1>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Company</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 
+                NOTE: v-bind:class can be done with an obj e.g. {css-class: boolean}
+                or just the name of the class as a string.
+                --->
+                <!--
+                E.g. As a string:
+                <tr v-bind:class="index % 2 == 0 ? '' : 'highlighted'" 
+                    v-for="(e, index) in employees">
+                -->
+                <!-- As an object: -->
+                <tr v-bind:class="{highlighted : index % 2}" 
+                    v-for="(e, index) in employees">                    
+                    <td>{{e.name}}</td>
+                    <td>{{e.title}}</td>
+                    <td>{{companyName}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                shapeStyles: {},
+                employees: [
+                    {name: 'Abby', title: "Accountant"},
+                    {name: 'Andy', title: "Marketing Manager"},
+                    {name: 'Brandon', title: "Vue.js Expert"},
+                    {name: 'Bob', title: "Key Account Manager"},
+                ],
+                companyName: 'VueX Ltd.'
+            },
+            
+            methods: {
+                changeShape: function() {
+                    
+                    if (typeof this.shapeStyles['border-radius'] !== 'undefined') {
+                        Vue.set(this.shapeStyles, 'border-radius', undefined);
+                    }
+                    else {
+                        Vue.set(this.shapeStyles, 'border-radius', '50%');
+                    }
+                    
+                }
+            }
+        });
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+.shape {
+    width: 150px;
+    height: 150px;
+    background-color: blue;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.highlighted {
+    background-color: #DECA9B;
+}

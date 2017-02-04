@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <div v-bind:style="[styles, moreStyles]"></div>
+        
+        <!--button v-on:click="changeColor()">Change Color</button-->
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            
+            el: '#app',
+            
+            data: {
+                color: 'blue',
+                moreStyles: {
+                    'border-radius': '5px',
+                    
+                    // data properties take precedence before computed properties
+                    'background-color': 'red', 
+                }
+            },
+            
+            computed: {
+                styles: function() {
+                    
+                    var height = 200;
+                    
+                    return {
+                        // NOTE: if there is a dash in the key, we need to put 
+                        // quotes around the key.
+                        'background-color': 'blue',
+                        width: (height / 2) + 'px',
+                        height: height + 'px'
+                    };
+
+                }
+            }
+            
+            /*
+            methods: {
+                changeColor: function() {
+                    if (this.color == 'blue')
+                        this.color = "red";
+                    else
+                        this.color = "blue";
+                }
+            }
+            */
+        });
+    
+    </script>
+
+</body>
+</html>
